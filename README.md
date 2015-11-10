@@ -14,7 +14,7 @@ Demo version released 11/10/2015.
 
 Running master tests: 
 
-  $ python runner.py 
+  	$ python runner.py 
 
 optional arguments:
 
