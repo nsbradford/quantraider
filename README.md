@@ -1,4 +1,4 @@
-# AutoTyrant
+# AlgoTrader Research Project
 
 Demo version released 11/10/2015.
 
