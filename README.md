@@ -1,6 +1,6 @@
 # AlgoTrader Research Project
 
-Demo version released 11/10/2015. Example output:
+Demo version released 11/10/2015. Example output of the NeuralNet trading on the SPY, with SPY as benchmark:
 ![huzzah](output/NeuralNet/algo_2015-10-15_17-53-04.png)
 
 ### TODO
