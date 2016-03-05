@@ -1,6 +1,7 @@
 # AlgoTrader Research Project
 
-Demo version released 11/10/2015.
+Demo version released 11/10/2015. Example output:
+![huzzah](output/NeuralNet/algo_2015-10-15_17-53-04.png)
 
 ### TODO
 
