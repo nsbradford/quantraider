@@ -5,6 +5,12 @@ Demo version released 11/10/2015, which supports backtesting with daily bars wit
 Example output of the NeuralNet trading on the SPY, with SPY as benchmark:
 ![huzzah](output/NeuralNet/algo_2015-10-15_17-53-04.png)
 
+### Dependencies
+
+* NumPy, SciPy, scikit-learn (use Anaconda): http://docs.continuum.io/anaconda/install
+* Lasagne (requires Theano): http://lasagne.readthedocs.org/en/latest/user/installation.html
+* Quantopia
+
 ### Usage
 
 Running master tests: 
@@ -24,9 +30,4 @@ Verify Quantopian Zipline framework:
 
     ./manager/example_backtest $ run_algo.py -f movingAverages.py --start 2000-1-1 --end 2014-1-1 --symbols AAPL -o movingAverages_out.pickle
     ./manager/example_backtest $ python readfile.py
-
-### Dependencies
-
-* NumPy, SciPy, scikit-learn (use Anaconda): http://docs.continuum.io/anaconda/install
-* Lasagne (requires Theano): http://lasagne.readthedocs.org/en/latest/user/installation.html
-* Quantopian Zipline (backtesting): https://github.com/quantopian/zipline
+n Zipline (backtesting): https://github.com/quantopian/zipline
