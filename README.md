@@ -9,7 +9,7 @@ Example output of the NeuralNet trading on the SPY, with SPY as benchmark:
 
 * NumPy, SciPy, scikit-learn (use Anaconda): http://docs.continuum.io/anaconda/install
 * Lasagne (requires Theano): http://lasagne.readthedocs.org/en/latest/user/installation.html
-* Quantopia
+* Quantopian Zipline (backtesting): https://github.com/quantopian/zipline
 
 ### Usage
 
@@ -30,4 +30,4 @@ Verify Quantopian Zipline framework:
 
     ./manager/example_backtest $ run_algo.py -f movingAverages.py --start 2000-1-1 --end 2014-1-1 --symbols AAPL -o movingAverages_out.pickle
     ./manager/example_backtest $ python readfile.py
-n Zipline (backtesting): https://github.com/quantopian/zipline
+
