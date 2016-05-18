@@ -1,15 +1,9 @@
 # AlgoTrader Research Project
 
-Demo version released 11/10/2015. Example output of the NeuralNet trading on the SPY, with SPY as benchmark:
+Demo version released 11/10/2015, which supports backtesting with daily bars with swappable strategies, as well as clustering stocks to use as training data.
+
+Example output of the NeuralNet trading on the SPY, with SPY as benchmark:
 ![huzzah](output/NeuralNet/algo_2015-10-15_17-53-04.png)
-
-### TODO
-
-* Add command-line option for trading/backtest start_date/end_date
-* Add large-scale comparison test for clustering vs. not clustering
-* Add volume
-* Add IS_NORMALIZE
-* Add IS_OVERFIT
 
 ### Usage
 
