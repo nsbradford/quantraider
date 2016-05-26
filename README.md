@@ -1,6 +1,6 @@
 # quantraider
-Tools for quantitative raiding and trading. Don't worry about only having the single project in here for now; more will be following!
+Tools for quantitative raiding and trading. 
 
-####algotrader
+<b>algotrader</b>: Demo of machine-learning based stock trading strategies.
 
-####quantscraper
+<b>quantscraper</b>: Web scraper for the [Quantopian](https://www.quantopian.com/) web site.
