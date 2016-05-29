@@ -15,20 +15,21 @@ BeautifulSoup4: Searching the HTML for our desired data. See documentation at ht
 ####Usage: 
 You'll be prompted for the username and password of the account immediately when starting the script. 
     
-    $ quantscraper.py [-h] [-u URL]
+    $ quantscraper.py [-h] [-u URL] [-k]
 
     optional arguments:
       -h, --help         show this help message and exit
       -u URL, --url URL  URL of live algo.
+      -k, --is_keep_open  Keep the browser open after scraping.
 
 As an alternative to providing a URL on the command-line, you may edit the source code declaration ALGO_LIST to contain a list of tuples with the desired URLs. This is the way to go if you're trying to gather data for a lot of different algorithms. Note that the name string is just for your benefit for when the algos are sorted and ranked at the end of the script; the URL is the important part.
     
     ALGO_LIST = [
-      ("ALGO_1_NAME_HERE", "https://www.quantopian.com/live_algorithms/REST_OF_THE_URL"),
-      ("ALGO_2_NAME_HERE", "https://www.quantopian.com/live_algorithms/REST_OF_THE_URL"),
-      ("ALGO_3_NAME_HERE", "https://www.quantopian.com/live_algorithms/REST_OF_THE_URL")
+      "https://www.quantopian.com/live_algorithms/REST_OF_THE_URL",
+      "https://www.quantopian.com/live_algorithms/REST_OF_THE_URL"
     ]
     
 ####Open for work:
-* add option to locate algorithm by name instead of URL
+* parallelize scraping with multithreading
 * add more complex features such as uploading code, running backtests, etc.
+ 
