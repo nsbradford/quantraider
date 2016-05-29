@@ -1,15 +1,15 @@
 #quantscraper
 
-Web scraper for the [Quantopian](https://www.quantopian.com/) web site, used to fascilitate Automated Trading Competition put on by the [WPI Investing Association](http://users.wpi.edu/~investing/).
+Web scraper for the [Quantopian](https://www.quantopian.com/) web site, used to facilitate Automated Trading Competition put on by the [WPI Investing Association](http://users.wpi.edu/~investing/).
 
 Ideally, we'd use the much faster [Mechanize](http://wwwsearch.sourceforge.net/mechanize/) library. However, because the data we're scraping is populated by JavaScript, we're forced to use Selenium, which is as slow as Firefox.
 
 ####Dependencies:
-Selenium WebDriver: Logging into Quantopian and letting the JavaScript populate our desired data. See documentation at http://www.seleniumhq.org/docs/03_webdriver.jsp
+<b>Selenium WebDriver</b>: Logging into Quantopian and letting the JavaScript populate our desired data. See documentation at http://www.seleniumhq.org/docs/03_webdriver.jsp
+
+<b>BeautifulSoup4</b>: Searching the HTML for our desired data. See documentation at https://www.crummy.com/software/BeautifulSoup/
 
     $ pip install -U selenium
-BeautifulSoup4: Searching the HTML for our desired data. See documentation at https://www.crummy.com/software/BeautifulSoup/
-
     $ pip install beautifulsoup4
         
 ####Usage: 
