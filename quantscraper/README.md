@@ -22,7 +22,7 @@ You'll be prompted for the username and password of the account immediately when
       -u URL, --url URL  URL of live algo.
       -k, --is_keep_open  Keep the browser open after scraping.
 
-As an alternative to providing a URL on the command-line, you may edit the source code declaration URL_ALGO_LIST to contain a list of tuples with the desired URLs. This is the way to go if you're trying to gather data for a lot of different algorithms. Note that the name string is just for your benefit for when the algos are sorted and ranked at the end of the script; the URL is the important part.
+As an alternative to providing a URL on the command-line, you may edit the source code declaration URL_ALGO_LIST to contain a list of the desired URLs. This is the way to go if you're trying to gather data for a lot of different algorithms. Note that the name string is just for your benefit for when the algos are sorted and ranked at the end of the script; the URL is the important part.
     
     URL_ALGO_LIST = [
       "https://www.quantopian.com/live_algorithms/REST_OF_THE_URL",
