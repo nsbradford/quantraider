@@ -10,6 +10,7 @@ from time import sleep
 import getpass
 
 from selenium import webdriver
+from selenium.common.exceptions import NoSuchElementException
 from bs4 import BeautifulSoup
 
 import config
@@ -22,13 +23,20 @@ def login(my_username, my_password):
     print "Logging in..."
     browser = webdriver.Firefox()
     browser.get(config.URL_QUANTOPIAN)
-    sleep(2)
-    username = browser.find_element_by_id(config.EMAIL_ID)
-    username.send_keys(my_username)
-    password = browser.find_element_by_id(config.PASSWORD_ID)
-    password.send_keys(my_password)
-    browser.find_element_by_id(config.BUTTON_ID).click()
-    sleep(1)
+
+    unsuccessful = True
+    while unsuccessful:
+        try:
+            sleep(1)
+            username = browser.find_element_by_id(config.EMAIL_ID)
+            username.send_keys(my_username)
+            password = browser.find_element_by_id(config.PASSWORD_ID)
+            password.send_keys(my_password)
+            browser.find_element_by_id(config.BUTTON_ID).click()
+            unsuccessful = False
+        except NoSuchElementException:
+            print "\tretry page load...\n"
+    assert browser.current_url != config.URL_QUANTOPIAN, "Login failed."
     return browser
 
 
@@ -40,7 +48,6 @@ def fetch_returns(browser, url_list):
         unsuccessful = True
         while unsuccessful:
             browser.get(url)
-            sleep(1)
             html = browser.page_source
             soup = BeautifulSoup(html) #BeautifulSoup(open("scraper.html"))
 
@@ -49,7 +56,7 @@ def fetch_returns(browser, url_list):
             num = soup.find("div", {"id": config.RETURN_ID}).string
 
             if num == config.FAILURE_VALUE:
-                print "[retry...]\n",
+                print "\t[retry...]\n",
             else:
                 print name, ": \t", num
                 return_list.append((name, float(num.strip("%"))))

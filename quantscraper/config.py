@@ -12,6 +12,8 @@ OUTPUT_FILE_NAME = "log.txt"
 EMAIL_ID = "user_email"
 PASSWORD_ID = "user_password"
 BUTTON_ID = "login-button"
+ALGOTITLE_ID = "algotitle"
+ALGOPAYLOAD_ID = "payload"
 # id_list = [
 #   ("returns", "livetrading-stats-returns")
 #   ("sharpe", "livetrading-stats-sharpe")
@@ -20,9 +22,6 @@ BUTTON_ID = "login-button"
 #   ("shortexposure", "livetrading-stats-shortexposure"),
 #   ("currentcash", "livetrading-stats-currentcash")
 # ]
-
-ALGOTITLE_ID = "algotitle"
-ALGOPAYLOAD_ID = "payload"
 RETURN_ID = "livetrading-stats-returns"
 FAILURE_VALUE = "--"
 
