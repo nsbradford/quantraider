@@ -1,6 +1,6 @@
 #quantscraper
 
-Web scraper for the [Quantopian](https://www.quantopian.com/) web site, used to facilitate the Automated Trading Competition put on by the [WPI Investing Association](http://users.wpi.edu/~investing/).
+Web scraper for the [Quantopian](https://www.quantopian.com/) web site, used to facilitate the Automated Trading Competition put on by the [WPI Investing Association](http://users.wpi.edu/~investing/). If you have several algorithms Live Trading and want to track their performance from the comfort of your command line, this will scrape the data for you. It should also be very easy to customize to your unique needs.
 
 Ideally, we'd use the much faster [Mechanize](http://wwwsearch.sourceforge.net/mechanize/) library. However, because the data we're scraping is populated by JavaScript, we're forced to use Selenium, which is as slow as Firefox.
 
