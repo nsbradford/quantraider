@@ -1,6 +1,6 @@
 #quantscraper
 
-Web scraper for the [Quantopian](https://www.quantopian.com/) web site, used to facilitate Automated Trading Competition put on by the [WPI Investing Association](http://users.wpi.edu/~investing/).
+Web scraper for the [Quantopian](https://www.quantopian.com/) web site, used to facilitate the Automated Trading Competition put on by the [WPI Investing Association](http://users.wpi.edu/~investing/). If you have several algorithms Live Trading and want to track their performance from the comfort of your command line, this will scrape the data for you. It should also be very easy to customize to your unique needs.
 
 Ideally, we'd use the much faster [Mechanize](http://wwwsearch.sourceforge.net/mechanize/) library. However, because the data we're scraping is populated by JavaScript, we're forced to use Selenium, which is as slow as Firefox.
 
@@ -22,7 +22,7 @@ You'll be prompted for the username and password of the account immediately when
       -u URL, --url URL  URL of live algo.
       -k, --is_keep_open  Keep the browser open after scraping.
 
-As an alternative to providing a URL on the command-line, you may edit the source code declaration URL_ALGO_LIST to contain a list of tuples with the desired URLs. This is the way to go if you're trying to gather data for a lot of different algorithms. Note that the name string is just for your benefit for when the algos are sorted and ranked at the end of the script; the URL is the important part.
+As an alternative to providing a URL on the command-line, you may edit the source code declaration URL_ALGO_LIST to contain a list of the desired URLs. This is the way to go if you're trying to gather data for a lot of different algorithms.
     
     URL_ALGO_LIST = [
       "https://www.quantopian.com/live_algorithms/REST_OF_THE_URL",

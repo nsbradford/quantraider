@@ -40,6 +40,7 @@ def my_sleep(seconds):
 		sys.stdout.write('.')
 		sleep(1)
 
+
 def main():
 	cj = cookielib.CookieJar()
 	br = mechanize.Browser()
@@ -55,13 +56,14 @@ def main():
 	br.form['user[email]'] = username
 	br.form['user[password]'] = password
 	br.submit()
-	url = br.open(url_nsbradford_3) # unfortunately, mechanize doesn't wait for JavaScript to load :/
+	url = br.open(url_nsbradford_3) # unfortunately, mechanize doesn't wait for JavaScript to load :(
 	html = url.read() #html = urlopen(url_nsbradford_3)
 	soup = BeautifulSoup(html) #BeautifulSoup(open("scraper.html"))
 	
 	for key, value in ids:
 		num = soup.find("div", {"id": value})
 		print key, num
+
 
 if __name__ == "__main__":
 	main()
