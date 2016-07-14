@@ -1,5 +1,4 @@
 # quantraider
-Tools for quantitative raiding and trading. 
 
 <b>Algotrader</b>: [deprecated] Demo of machine-learning based stock trading strategies.
 
