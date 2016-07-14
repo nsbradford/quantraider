@@ -1,6 +1,8 @@
 # quantraider
 Tools for quantitative raiding and trading. 
 
-<b>algotrader</b>: Demo of machine-learning based stock trading strategies.
+<b>Algotrader</b>: [deprecated] Demo of machine-learning based stock trading strategies.
 
-<b>quantscraper</b>: Web scraper for the [Quantopian](https://www.quantopian.com/) web site.
+<b>QuantopianArchive</b>: Algorithms and templates for use with [Quantopian](https://www.quantopian.com/).
+
+<b>Webscraper</b>: Tool for tracking live algorithms.
