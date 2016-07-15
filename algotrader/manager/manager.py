@@ -92,10 +92,10 @@ class Manager:
         data = load_bars_from_yahoo(stocks=[ticker], start=start, end=end)
         data = Manager.convertPanelToList(data)
         data = ([                             
-                    ([  x[0],   # open
-                        x[1],   # high  
-                        x[2],   # low   
-                        x[3],   # close 
+                    ([  x[0]-x[0],   # open
+                        x[1]-x[0],   # high  
+                        x[2]-x[0],   # low   
+                        x[3]-x[0],   # close 
                         #x[4],  # volume
                         #x[5],  # price (same as close)
                     ]) for x in data # data stored as (open, high, low, close, volume, price)

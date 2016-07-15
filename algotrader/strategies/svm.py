@@ -29,8 +29,8 @@ class SVM(object):
 		train_x = []
 		train_y = []
 
-		print "input: " + str(x)
-		print "output: " + str(y)
+		# print "input: " + str(x)
+		# print "output: " + str(y)
 
 		for y1 in y[0]:
 			train_y.append(y1[0])

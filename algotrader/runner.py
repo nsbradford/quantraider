@@ -26,11 +26,11 @@ from datetime import datetime
 from manager.manager import Manager
 from sklearn.cluster import KMeans
 
-# neural nets
+# stategies
 from strategies.naive_bayes import NaiveBayes
 from strategies.svm import SVM
-from neuralnets.tradingnet import TradingNet
-from neuralnets.deepnet import DeepNet, testNN
+from strategies.tradingnet import TradingNet
+from strategies.deepnet import DeepNet, testNN
 
 # backtesting
 from zipline.algorithm import TradingAlgorithm
@@ -77,7 +77,7 @@ def trainStrategy(strategy_class, stock_list, epochs_num, is_graph=False):
         data.append(stock[:-2])         # delete last data entry, because it won't be used
 
     if is_graph:
-        print target
+        #print target
         plt.figure("Training Data")
         for i in range(len(context.normalized_data[0])):
            plt.plot([x[i] for x in context.normalized_data])
@@ -164,6 +164,7 @@ def run_clusters(strategy_class, clustering_tickers, cluster_num, epochs_num, tr
         For each stock in that cluster, run a backtest.
         Graph results.
     """
+    print "\nGathering data..."
     ticker_list, raw_stock_data_list = Manager.getRawStockDataList(clustering_tickers, training_start, training_end, 252)
     normalized_stock_data_list = [Manager.preprocessData(x) for x in raw_stock_data_list]
     print "\nClustering..."
@@ -210,7 +211,7 @@ def run_clusters(strategy_class, clustering_tickers, cluster_num, epochs_num, tr
 def main():
     """ Allows for switching easily between different tests using a different STRATEGY_CLASS.
         strategy_num: Must pick a STRATEGY_CLASS from the strategy_dict.
-    """ 
+    """
     strategy_dict = {
         1: TradingNet,
         2: SVM,
@@ -230,10 +231,10 @@ def main():
     parser.add_argument("-l", "--graph_elbow", action='store_true', help='Graph elbow method for clustering.')
     args = parser.parse_args()
 
-    training_start = datetime(2013, 1, 1, 0, 0, 0, 0, pytz.utc)
-    training_end = datetime(2014, 1, 1, 0, 0, 0, 0, pytz.utc)
-    backtest_start = datetime(2014, 1, 1, 0, 0, 0, 0, pytz.utc)
-    backtest_end = datetime(2014, 3, 1, 0, 0, 0, 0, pytz.utc)
+    training_start = datetime(2014, 1, 1, 0, 0, 0, 0, pytz.utc)
+    training_end = datetime(2015, 1, 1, 0, 0, 0, 0, pytz.utc)
+    backtest_start = datetime(2015, 1, 1, 0, 0, 0, 0, pytz.utc)
+    backtest_end = datetime(2016, 1, 1, 0, 0, 0, 0, pytz.utc)
     #IS_NORMALIZE = args.is_normalize
     #IS_OVERFIT = args.is_overfit
     print "Using:", str(strategy_dict[args.strategy_num])
