@@ -12,9 +12,10 @@ import itertools
 import numpy as np
 import pandas as pd
 from scipy import stats 
-from sklearn import svm
+from sklearn.ensemble import RandomForestClassifier
 import talib
 
+N_LOOKBACK = 1
 N_TRAIN = 1000
 N_DATA_PER_DAY = 7 # use for the unit tests
 I_CLOSE_PRICE = 2
@@ -29,10 +30,9 @@ PREDICT_THRESHOLD = 0.5
 def initialize(context):
     """ Set number of training days, trading security, flags, and last buy price."""
     UnitTest().run()
-    set_long_only()
     set_max_order_count(1)
     set_commission(commission.PerTrade(cost=0))
-    context.security = sid(24) # pick a stock here! sid(24) is AAPL
+    context.security = sid(39840) # pick a stock here! sid(4922) is 3M
     set_benchmark(context.security)
     set_commission(commission.PerTrade(cost=0.0))
     context.flag_bought = False
@@ -276,19 +276,18 @@ class StrategyManager(object):
 
     @staticmethod
     def get_targets(data):
-        """ Data stored as (open, high, low, close, volume).
+        """ Data stored as (high, low, close, volume).
             currently no volume or price.
             Strategy will make purshasing decisions at market open. Thus:
-            If TOMORROW's OPEN is higher than TODAY's OPEN, BUY.
+            If TODAY's CLOSE is higher than TODAY's OPEN, BUY.
         """
         target = []
         for i in xrange(len(data)):
             if i == 0:
                 continue
-            tomorrow = data[i, :]
             today = data[i-1, :]
             t = 0
-            if tomorrow[I_CLOSE_PRICE] > today[I_CLOSE_PRICE]:
+            if today[I_CLOSE_PRICE] > 0:
                 t = 1
             target.append(t) # list with one element, one for high, or zero for low
         assert len(data) == len(target) + 1, "ERROR: data and target must have same length."
@@ -307,31 +306,31 @@ class StrategyManager(object):
     @staticmethod
     def train_strategy(normalized_data):
         """ Create and train your strategy based on a data set."""
-        return Strategy(normalized_data[:-1], StrategyManager.get_targets(normalized_data), N_PREDICT)
+        return Strategy(normalized_data[:-1], StrategyManager.get_targets(normalized_data), N_LOOKBACK)
 
 
 #==================================================================================================
 
 class Strategy(object):
 
-    def __init__(self, x, y):
+    def __init__(self, x, y, n_lookback):
         """ Constructor for the trading strategy.
         Args:
             x: list of input data in the form
                 x = [[x1 x2 ... xn],[x1 x2 ... xn],[x1 x2 ... xn]], # stock 1
             y: list of expected data in the form. All values of y must be 0 or 1.
         """
-        self.N_PREDICT = N_PREDICT
-        self.algo = svm.SVC(C=100, probability=True)  
-        training_data = StrategyManager.multiday_vector(x, self.N_PREDICT)
-        training_targets = y[self.N_PREDICT - 1:]
+        self.n_lookback = n_lookback
+        self.algo = RandomForestClassifier()  
+        training_data = StrategyManager.multiday_vector(x, self.n_lookback)
+        training_targets = y[self.n_lookback - 1:]
         self.algo.fit(training_data, training_targets)
         #record("Training Score", self.algo.score(training_data, training_targets))
 
     def score(self, x, y):
         """ """
-        x = StrategyManager.multiday_vector(x, self.N_PREDICT)
-        y = y[self.N_PREDICT - 1:]
+        x = StrategyManager.multiday_vector(x, self.n_lookback)
+        y = y[self.n_lookback - 1:]
         return self.algo.score(x, y)
 
     def predict(self, x):
@@ -341,12 +340,12 @@ class Strategy(object):
         Returns:
             Outputs a list of digits between 0 and 1 for all timesteps in the sequence
         """
-        predict_data = StrategyManager.multiday_vector(x, self.N_PREDICT)
+        predict_data = StrategyManager.multiday_vector(x, self.n_lookback)
         ret =  self.algo.predict(predict_data)
         return ret[-1]
     
     def predict_prob(self, x):
-        predict_data = StrategyManager.multiday_vector(x, self.N_PREDICT)
+        predict_data = StrategyManager.multiday_vector(x, self.n_lookback)
         return self.algo.predict_proba(predict_data)[-1][1]
 
 #==================================================================================================
@@ -367,9 +366,9 @@ class UnitTest(object):
 
     def test_get_targets(self):
         targets = StrategyManager.get_targets(self.SIMPLE_DATA)
-        assert np.array_equal([0, 1, 0, 1, 0, 1, 0], targets)
+        assert np.array_equal([1, 0, 1, 0, 1, 0, 1], targets)
         targets = StrategyManager.get_targets(self.HARDER_DATA)
-        assert np.array_equal([0, 0, 1, 0, 0, 1, 0], targets)
+        assert np.array_equal([1, 1, 0, 1, 0, 0, 1], targets)
 
 
     def test_preprocess_data(self):
