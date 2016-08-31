@@ -1,4 +1,4 @@
-#quantscraper
+#Webscraper
 
 Web scraper for the [Quantopian](https://www.quantopian.com/) web site, used to facilitate the Automated Trading Competition put on by the [WPI Investing Association](http://users.wpi.edu/~investing/). If you have several algorithms Live Trading and want to track their performance from the comfort of your command line, this will scrape the data for you. It should also be very easy to customize to your unique needs.
 
