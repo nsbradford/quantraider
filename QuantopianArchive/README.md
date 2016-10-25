@@ -20,7 +20,6 @@ Find the video lectures and IPython notebooks [here](https://www.quantopian.com/
   * Very basic overview of Python syntax.
 3. Introduction to NumPy
   * 
-
 4. Pandas: DataFrame, Series, loc/iloc slicing, boolean indexing, handling NaN
 5. Plotting Data: data structure, histograms, cumulative histograms, scatter plots
 7. Variance: Variance/standard deviation, mean absolute deviation, semivariance/semideivation
@@ -33,4 +32,19 @@ Find the video lectures and IPython notebooks [here](https://www.quantopian.com/
 	* Beta Hedging: Every asset has a Beta to every other asset, so construct a factor model of form: Y=a + b1x1 + b2x2 ...
 	* Risk Exposure: an asset's beta value towards another asset. Minimization is key to all of quant finance.
 	* Managing risk: diversification, long short equity (a generalization of pairs trading by creating a ranking system), and hedging (short the equivalent Beta value), none of which can ever fully eliminate risk in a portfolio because they're backwards-looking
-9. 
+	* Can use Kalman filters to estimate Beta
+9. Multiple Linear Regression
+	* Often, two independent variables are actually related through a third ("confounding")
+	* Requires several assumptions:
+		* Independent variable is not random
+		* Error variance is constant, normally distributed, and not autocorrelated
+		* The relationship is not exactly linear (covariance), otherwise there are multiple equation solutions
+	* Assemble model incrementally by adding variables with AIC (Akaike information criterion) or BIC (Bayesian) scores
+	* The best models still require some human judgement as to the best factors to include
+10. Linear Correlation Analysis 
+	* First, it's helpful to understand [Covariance](http://mathworld.wolfram.com/Covariance.html) and the Covariance Matrix (the diagonal is the variance of the variable, and non-diagonals are each a covariance between two variables)
+	* The Correlation Coefficient measures the extent to which the relationship between two variables is linear, and is in range (-1, 1). Equation: r= Cov(x,y) / ( std(x)std(y) )
+	* Uses: find correlated assets, or construct a portfolio of uncorrelated assets
+	* Warning: correlation is by definition linear, so will utterly fail for different models.
+	* Spearman Rank Correlation: dealing with data not fitting the linear model
+		* ended video at 29:30...
