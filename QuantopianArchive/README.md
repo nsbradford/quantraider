@@ -49,3 +49,13 @@ Find the video lectures and IPython notebooks [here](https://www.quantopian.com/
 	* Spearman Rank Correlation: dealing with data not fitting the linear model
 	* When there are delays in correlation: re-run correlation with different lags/shifts added (beware that this is prone to multiple comparison bias). See Bonferroni Correction.
 	* Important Use Case: Evaluating a Ranking Model, as in a Long-Short Equity strategy (rank stocks, then buy the highly ranked ones and sell the poorly ranked ones) which should be market neutral. Run Spearman Correlation on (modelScores, futureReturns) to get a correlation constant and P-value.
+11. Example implementation of the Long/Short Cross-Sectional Momentum algorithm
+12. Random Variables
+	* Continuous or Discrete, and addressed according to their probability distribution (e.g. a die roll produces values 1-6 with equal probability)
+	* For each probability distribution describing a random variable, there is a probability density function (PDF) if it's descrete, along with a cumulative distribution function (CDF) for F(x) = P(X < x)
+	* Bernoulli random variables are binary, and are described by some number of random trials where the probabilities are constant.
+	* In Modern Portfolio Theory, stocks are generally assumed to behave like random variables following a normal distribution (see Central Limit Theorem), with the implication that a linear combination of multiple stocks also results in a normal distribution. 
+	* Standard Normal random variable: Z = (X - mean) / stddev
+	* Use a Jarque-Bera test to check if returns are normally distributed. 
+13. Statistical Moments
+	* 
