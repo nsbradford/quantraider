@@ -47,4 +47,5 @@ Find the video lectures and IPython notebooks [here](https://www.quantopian.com/
 	* Uses: find correlated assets, or construct a portfolio of uncorrelated assets
 	* Warning: correlation is by definition linear, so will utterly fail for different models.
 	* Spearman Rank Correlation: dealing with data not fitting the linear model
-		* ended video at 29:30...
+	* When there are delays in correlation: re-run correlation with different lags/shifts added (beware that this is prone to multiple comparison bias). See Bonferroni Correction.
+	* Important Use Case: Evaluating a Ranking Model, as in a Long-Short Equity strategy (rank stocks, then buy the highly ranked ones and sell the poorly ranked ones) which should be market neutral. Run Spearman Correlation on (modelScores, futureReturns) to get a correlation constant and P-value.
