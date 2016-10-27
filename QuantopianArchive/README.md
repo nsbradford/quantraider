@@ -58,4 +58,20 @@ Find the video lectures and IPython notebooks [here](https://www.quantopian.com/
 	* Standard Normal random variable: Z = (X - mean) / stddev
 	* Use a Jarque-Bera test to check if returns are normally distributed. 
 13. Statistical Moments
+	* Skew: Positive/right skew has a long tail to the right (median > mode), negative/left skew has a long tail to the left (median , mode)
+	* Kurtosis: measures how "peaked" a distribution is compared to the normal (kurtosis=3). Greater kurtosis means high peak with fat tails, while low kurtosis means broad.
+	* Jarque-Bera tests whether or not
+14. Confidence Intervals
+	* We want to discover the population mean, but we only have a sample mean. Thus, we should report with a confidence interval (2 standard deviations for 95%). This represents a 95% probability that the true mean lies within that interval (but it does not mean that our guess is 95% probable - subtle difference).
+15. Hypothesis Testing
+	* Create a null hypothesis H0 and alternative hypthesis HA, identify appropriate test statistic and its distribution, and calculate and compare the critical value with the significance level.
+	* Z-values and P-values
+	* t-distribution: meant to be used with sample mean and sample variance, and is shorter and fatter.
+	* Chi-squared distribution: use for single variance tests
+	* F-distribution: used for comparing variances
+	* Please go to Wikipedia to learn more in-depth.
+16. Maximum Likelihood Estimates (MLE)
+	* The process of estimating the parameters of a statistical model (normal distribution, etc) given observations. 
+	* Use case: fitting asset returns to a normal distribution.
+17. Spearman Rank Correlation
 	* 
