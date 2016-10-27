@@ -96,3 +96,14 @@ Find the video lectures and IPython notebooks [here](https://www.quantopian.com/
 	* These models have heavy tails and so typically incur more risk than normal distributions.
 	* To determine if a series is AR, run correlations of points with their previous points. Try for as few params as possible, especially since the significance decreases the farther back in time you go.
 26. The Dangers of Overfitting
+	* Potentially the largest recurring problem in quant finance; it's nearly never possible to fully eliminate, only mitigate.
+	* All acquired data includes some noise around the true signal, so the question is: did we model the signal or the noise?
+	* General Rule: if the number of rules approaches the points in the data set, it is too complex and prone to overfitting. It's much better to explain 60% of data with 2 params than 90% with 10 params.
+	* Moving Avg window length optimization: a very common pitfall and case for overfitting. Ideally, you pick a robust window size that is not especially prone to shifting conditions.
+	* Information Criterion: a measure of the relative quality of a model's complexity vs. performance
+27. Instability of Estimates
+	* Even measures like mean, variance, Sharpe, etc. have an associated error.
+28. Model Misspecification
+	* Constantly run exhaustive tests to make sure you underlying assumptions are all valid (e.g. don't assume market returns are normally distributed).
+29. Violations of Regression Models
+	* 
