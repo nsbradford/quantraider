@@ -29,10 +29,6 @@ Find the video lectures and IPython notebooks [here](https://www.quantopian.com/
 	* Regression vs. Correlation: both limited to linear models and are measures of covariance. Linear regression also works for multiple independent variables
 	* Warning: you can only ever calculate Alpha and Beta over a specific time period, but you need to calculate a confidence interval on its applicability to the future. 
 	* "Beta" in finance typically refers to Beta value for Y=a + b * x where x is the S&P500. Quantopian requires competition algorithms to be between -0.3 and 0.3
-	* Beta Hedging: Every asset has a Beta to every other asset, so construct a factor model of form: Y=a + b1x1 + b2x2 ...
-	* Risk Exposure: an asset's beta value towards another asset. Minimization is key to all of quant finance.
-	* Managing risk: diversification, long short equity (a generalization of pairs trading by creating a ranking system), and hedging (short the equivalent Beta value), none of which can ever fully eliminate risk in a portfolio because they're backwards-looking
-	* Can use Kalman filters to estimate Beta
 9. Multiple Linear Regression
 	* Often, two independent variables are actually related through a third ("confounding")
 	* Requires several assumptions:
@@ -46,9 +42,6 @@ Find the video lectures and IPython notebooks [here](https://www.quantopian.com/
 	* The Correlation Coefficient measures the extent to which the relationship between two variables is linear, and is in range (-1, 1). Equation: r= Cov(x,y) / ( std(x)std(y) )
 	* Uses: find correlated assets, or construct a portfolio of uncorrelated assets
 	* Warning: correlation is by definition linear, so will utterly fail for different models.
-	* Spearman Rank Correlation: dealing with data not fitting the linear model
-	* When there are delays in correlation: re-run correlation with different lags/shifts added (beware that this is prone to multiple comparison bias). See Bonferroni Correction.
-	* Important Use Case: Evaluating a Ranking Model, as in a Long-Short Equity strategy (rank stocks, then buy the highly ranked ones and sell the poorly ranked ones) which should be market neutral. Run Spearman Correlation on (modelScores, futureReturns) to get a correlation constant and P-value.
 11. Example implementation of the Long/Short Cross-Sectional Momentum algorithm
 12. Random Variables
 	* Continuous or Discrete, and addressed according to their probability distribution (e.g. a die roll produces values 1-6 with equal probability)
@@ -74,4 +67,32 @@ Find the video lectures and IPython notebooks [here](https://www.quantopian.com/
 	* The process of estimating the parameters of a statistical model (normal distribution, etc) given observations. 
 	* Use case: fitting asset returns to a normal distribution.
 17. Spearman Rank Correlation
-	* 
+	* Used for dealing with data not fitting the linear model
+	* When there are delays in correlation: re-run correlation with different lags/shifts added (beware that this is prone to multiple comparison bias). See Bonferroni Correction.
+	* Important Use Case: Evaluating a Ranking Model, as in a Long-Short Equity strategy (rank stocks, then buy the highly ranked ones and sell the poorly ranked ones) which should be market neutral. Run Spearman Correlation on (modelScores, futureReturns) to get a correlation constant and P-value.
+18. Beta Hedging
+	* Every asset has a Beta to every other asset, so construct a factor model of form: Y=a + b1x1 + b2x2 ...
+	* Risk Exposure: an asset's beta value towards another asset. Minimization is key to all of quant finance.
+	* Managing risk: diversification, long short equity (a generalization of pairs trading by creating a ranking system), and hedging (short the equivalent Beta value), none of which can ever fully eliminate risk in a portfolio because they're backwards-looking
+	* Can use Kalman filters to estimate Beta
+19. Beta Hedging Algorithm
+20. Leverege
+	* Fundamentally is just borrowing money to trade with, so that you can maximize your returns. Specifically, we trade "on margin" by taking a loan out from the broker.
+	* Multiplying capital base increases both risk and returns, keeping the Sharpe Ratio the same.
+	* When dealing with leverege, must remember to factor in the negative cash flow that results from interest payments on the debt. 
+	* Risk-adjusted returns: often defined by the Sharpe Ratio
+21. Pairs Trading
+	* Cointegration: if two securities are cointegrated, there is some linear combination between them that will vary around a mean according to the same probability distribution. This is the foundation for saying that they are Mean Reverting.
+	* Do not confuse cointegration with correlation, as two series can be correlated without actually mean reverting (e.g. two securities which both increase simultaneously with different slopes), or mean reverting without being correlated at all.
+	* Multiple comparisons bias: If you run a large number of p-value tests on the universe of all securities, you are bound to find some spurious conclusions (i.e. if p<0.05 is significance test, then 5% of all p-value tests you run will be wrong)
+	* To prevent lookahead bias, make sure to compute rolling Betas (using moving averages) instead of computing over the entire history window.
+22. Basic Pairs Trading Algorithm
+23. Advanced Pairs Trading Algorithm
+24. Position Concentration Risk: Why to Diversify
+	* Demos how volatility/risk decreases with increased number of uncorrelated assets in the portfolio.
+	* According to Modern Portfolio Theory, you can calculate the expected return of the portfolio by summing the individual weights with the means and variances of each asset. The overall risk can then be calculated (expected standard deviation).
+25. Autocorrelation and Auto Regressive (AR) Models
+	* An AR(p) model is linearly dependent on 'p' previous points in the series, as well as some stochastic (imperfectly predictable) term. 
+	* These models have heavy tails and so typically incur more risk than normal distributions.
+	* To determine if a series is AR, run correlations of points with their previous points. Try for as few params as possible, especially since the significance decreases the farther back in time you go.
+26. The Dangers of Overfitting
