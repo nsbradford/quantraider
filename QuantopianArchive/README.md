@@ -106,4 +106,18 @@ Find the video lectures and IPython notebooks [here](https://www.quantopian.com/
 28. Model Misspecification
 	* Constantly run exhaustive tests to make sure you underlying assumptions are all valid (e.g. don't assume market returns are normally distributed).
 29. Violations of Regression Models
-	* 
+	* Focus on the Residuals (predictions on existing data), which should be normally distributed (test for Heteroskedasticity, which is slightly different)
+	* Financial data is almost always autocorrelated, which means that most statistical measurements assuming a normal distribution and no autocorrelation will be wrong.
+	* Newey-West is a method for computing variance that accounts for autocorrelation.
+	* Anscombe's Quartet: sample of 4 graphs with the same mean and variance and regression properties, but are obviously very different.
+30. Regression Model Instability
+	* seaborn has a nice visualization of the extreme regression lines possible for a dataset within a certain confidence interval
+	* constantly run tests to verify current conditions fall within bounds/assumptions of model
+31. Integration, Cointegration, and Stationarity
+	* Stationary Process: meta params (such as mean and variance) do not change. Stationarity can change too!
+	* Wold's Theorem and the Order of Integration: Any stationary process is I(0)
+	* Cointegration: If all series are I(1) and some linear combination of them is I(0), then the time series is cointegrated. Thus, the result lacks much auto-covariance and is mostly noise, validating our pairs trading idea.
+32. Value at Risk (VaR) and Conditional Value at Risk (CVaR)
+	* Historical (non-parametric) VaR looks at previous returns distributions, while other VaR might assume a normal distribution.
+	* CVaR, also called Expected Shortfall (ES) can be considered superior to pure VaR as it takes into account the shape of the returns distribution.
+33. Arbitrage Pricing Theory
