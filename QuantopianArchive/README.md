@@ -12,19 +12,20 @@ Find the video lectures and IPython notebooks [here](https://www.quantopian.com/
   * Gives an overview of the [IPython](https://ipython.org/) environment in Quantopian Research, with samples of how to access market data.
   * Want to get returns easily? Just do:
   
-            > data = get_pricing('MSFT', start_date='2012-1-1', end_date='2015-6-1')
-            > X = data['price']
-            > R = X.pct_change()[1:] # first element is NaN
+			> data = get_pricing('MSFT', start_date='2012-1-1', end_date='2015-6-1')
+			> X = data['price']
+			> R = X.pct_change()[1:] # first element is NaN
 
 2. Introduction to Python
-  * Very basic overview of Python syntax.
 3. Introduction to NumPy
-  * 
-4. Pandas: DataFrame, Series, loc/iloc slicing, boolean indexing, handling NaN
+* Introduction to Python
+3. Introduction to [NumPy](http://www.numpy.org/): linear algebra and covariance
+4. Introduction to [Pandas](http://pandas.pydata.org/): DataFrame, Series, loc/iloc slicing, boolean indexing, handling NaN
 5. Plotting Data: data structure, histograms, cumulative histograms, scatter plots
+6. Means: Geometric and Harmonic means
 7. Variance: Variance/standard deviation, mean absolute deviation, semivariance/semideivation
 8. Linear Regression: 
-	* Ordinary Least Squares is the objective function
+	* Ordinary Least Squares is the objective function
 	* F-statistic can be used similar to P-value (if under threshold, do not look at test results for risk of introducing bias)
 	* Regression vs. Correlation: both limited to linear models and are measures of covariance. Linear regression also works for multiple independent variables
 	* Warning: you can only ever calculate Alpha and Beta over a specific time period, but you need to calculate a confidence interval on its applicability to the future. 
@@ -72,7 +73,7 @@ Find the video lectures and IPython notebooks [here](https://www.quantopian.com/
 	* Important Use Case: Evaluating a Ranking Model, as in a Long-Short Equity strategy (rank stocks, then buy the highly ranked ones and sell the poorly ranked ones) which should be market neutral. Run Spearman Correlation on (modelScores, futureReturns) to get a correlation constant and P-value.
 18. Beta Hedging
 	* Every asset has a Beta to every other asset, so construct a factor model of form: Y=a + b1x1 + b2x2 ...
-	* Risk Exposure: an asset's beta value towards another asset. Minimization is key to all of quant finance.
+	* Risk Exposure: an asset's beta value towards another asset. Minimization is key to all of quant finance.
 	* Managing risk: diversification, long short equity (a generalization of pairs trading by creating a ranking system), and hedging (short the equivalent Beta value), none of which can ever fully eliminate risk in a portfolio because they're backwards-looking
 	* Can use Kalman filters to estimate Beta
 19. Beta Hedging Algorithm
@@ -96,26 +97,26 @@ Find the video lectures and IPython notebooks [here](https://www.quantopian.com/
 	* These models have heavy tails and so typically incur more risk than normal distributions.
 	* To determine if a series is AR, run correlations of points with their previous points. Try for as few params as possible, especially since the significance decreases the farther back in time you go.
 26. The Dangers of Overfitting
-	* Potentially the largest recurring problem in quant finance; it's nearly never possible to fully eliminate, only mitigate.
+	* Potentially the largest recurring problem in quant finance; it is nearly never possible to fully eliminate, only mitigate.
 	* All acquired data includes some noise around the true signal, so the question is: did we model the signal or the noise?
-	* General Rule: if the number of rules approaches the points in the data set, it is too complex and prone to overfitting. It's much better to explain 60% of data with 2 params than 90% with 10 params.
+	* General Rule: if the number of rules approaches the points in the data set, it is too complex and prone to overfitting. It is much better to explain 60% of data with 2 params than 90% with 10 params.
 	* Moving Avg window length optimization: a very common pitfall and case for overfitting. Ideally, you pick a robust window size that is not especially prone to shifting conditions.
-	* Information Criterion: a measure of the relative quality of a model's complexity vs. performance
+	* Information Criterion: a measure of the relative quality of a models complexity vs. performance
 27. Instability of Estimates
 	* Even measures like mean, variance, Sharpe, etc. have an associated error.
 28. Model Misspecification
-	* Constantly run exhaustive tests to make sure you underlying assumptions are all valid (e.g. don't assume market returns are normally distributed).
+	* Constantly run exhaustive tests to make sure you underlying assumptions are all valid (e.g. do not assume market returns are normally distributed).
 29. Violations of Regression Models
 	* Focus on the Residuals (predictions on existing data), which should be normally distributed (test for Heteroskedasticity, which is slightly different)
 	* Financial data is almost always autocorrelated, which means that most statistical measurements assuming a normal distribution and no autocorrelation will be wrong.
 	* Newey-West is a method for computing variance that accounts for autocorrelation.
-	* Anscombe's Quartet: sample of 4 graphs with the same mean and variance and regression properties, but are obviously very different.
+	* Anscombe Quartet: sample of 4 graphs with the same mean and variance and regression properties, but are obviously very different.
 30. Regression Model Instability
 	* seaborn has a nice visualization of the extreme regression lines possible for a dataset within a certain confidence interval
 	* constantly run tests to verify current conditions fall within bounds/assumptions of model
 31. Integration, Cointegration, and Stationarity
 	* Stationary Process: meta params (such as mean and variance) do not change. Stationarity can change too!
-	* Wold's Theorem and the Order of Integration: Any stationary process is I(0)
+	* Wold Theorem and the Order of Integration: Any stationary process is I(0)
 	* Cointegration: If all series are I(1) and some linear combination of them is I(0), then the time series is cointegrated. Thus, the result lacks much auto-covariance and is mostly noise, validating our pairs trading idea.
 32. Value at Risk (VaR) and Conditional Value at Risk (CVaR)
 	* Historical (non-parametric) VaR looks at previous returns distributions, while other VaR might assume a normal distribution.
