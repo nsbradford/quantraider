@@ -29,7 +29,7 @@ Find the video lectures and IPython notebooks [here](https://www.quantopian.com/
 	* F-statistic can be used similar to P-value (if under threshold, do not look at test results for risk of introducing bias)
 	* Regression vs. Correlation: both limited to linear models and are measures of covariance. Linear regression also works for multiple independent variables
 	* Warning: you can only ever calculate Alpha and Beta over a specific time period, but you need to calculate a confidence interval on its applicability to the future. 
-	* "Beta" in finance typically refers to Beta value for Y=a + b * x where x is the S&P500. Quantopian requires competition algorithms to be between -0.3 and 0.3
+	* "Beta" in finance typically refers to Beta value for Y=a + b * x where x is the S&P500. Quantopian requires competition algorithms to be between -0.3 and 0.3
 9. Multiple Linear Regression
 	* Often, two independent variables are actually related through a third ("confounding")
 	* Requires several assumptions:
