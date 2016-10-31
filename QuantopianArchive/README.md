@@ -140,7 +140,7 @@ Find the video lectures and IPython notebooks [here](https://www.quantopian.com/
     * Versatile and Scalable, market neutrality is built-in
     * High minimum capital capacity (dollars needed for strategy to function) due to high transactions costs and "Friction because of Prices": very easy to have uneven positions because stock prices don't divide evenly with the amount requested by the strategy (especially when you're trying to hold hundreds of positions with only a few hundred thousand dollars in capital).
 37. Long-Short Equity Algorithm
-38. Ranking Universes by Factors
+38. Ranking Universes by Factors: How to evaluate a ranking system
     * 
 43. ARCH, GARCH, and GMM: A primer on volatility forecasting models developed with Andrei Kirilenko.
 44. Kalman Filters How to use Kalman filters to get a good signal out of noisy data.
