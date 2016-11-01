@@ -43,7 +43,7 @@ Find the video lectures and IPython notebooks [here](https://www.quantopian.com/
     * The Correlation Coefficient measures the extent to which the relationship between two variables is linear, and is in range (-1, 1). Equation: r= Cov(x,y) / ( std(x)std(y) )
     * Uses: find correlated assets, or construct a portfolio of uncorrelated assets
     * Warning: correlation is by definition linear, so will utterly fail for different models.
-11. Example implementation of the Long-Short Cross-Sectional Momentum algorithm
+11. Example: Long-Short Cross-Sectional Momentum algorithm
 12. Random Variables
     * Continuous or Discrete, and addressed according to their probability distribution (e.g. a die roll produces values 1-6 with equal probability)
     * For each probability distribution describing a random variable, there is a probability density function (PDF) if it's descrete, along with a cumulative distribution function (CDF) for F(x) = P(X < x)
@@ -141,9 +141,12 @@ Find the video lectures and IPython notebooks [here](https://www.quantopian.com/
     * High minimum capital capacity (dollars needed for strategy to function) due to high transactions costs and "Friction because of Prices": very easy to have uneven positions because stock prices don't divide evenly with the amount requested by the strategy (especially when you're trying to hold hundreds of positions with only a few hundred thousand dollars in capital).
 37. Long-Short Equity Algorithm
 38. Ranking Universes by Factors: How to evaluate a ranking system
-    * 
-43. ARCH, GARCH, and GMM: A primer on volatility forecasting models developed with Andrei Kirilenko.
+    * "Clone and tweak" from existing academic papers or models that have been argitraged out is highly recommended.
+43. ARCH, GARCH, and GMM: A primer on volatility forecasting models
+    * AutoRegressive Conditionally Heteroskedastic (ARCH) occurs when the volatility of a time series is also autoregressive.
+    * If the error variance is an ARMA, then the model is a Generalized ARCH (GARCH) model.
 44. Kalman Filters How to use Kalman filters to get a good signal out of noisy data.
+    * Beta, moving averages, and other signals can be improved with Kalman filters.
 45. Example: Kalman Filter Pairs Trade: An algorithm to go along with Kalman Filters.
 47. Case Study: Traditional Value Factor: How to build a long/short value factor.
 47. Example: Momentum Algorithm: An algorithm to showcase an implementation of a momentum strategy.
