@@ -23,7 +23,7 @@ url_quantopian = "https://www.quantopian.com/signin"
 url_nsbradford_3 = "https://www.quantopian.com/live_algorithms/570259fc34c61fe4c6000875"
 
 username = "nsbradford@wpi.edu"
-password = "BankBetterHaveMyMoney2015"
+password = "?"
 
 ids = [
 	("id_returns", "livetrading-stats-returns"),
