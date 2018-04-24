@@ -1,6 +1,6 @@
 # quantraider
 
-Automated stock market trading demos and tools, by Nicholas Bradford. All are deprecated as of September 2016. The most successful algorithm used an SVM with Quantopian/Robinhood (see QuantopianArchive for template):
+Automated stock market trading demos and tools, by Nicholas Bradford. All are deprecated as of September 2016. Here's an example of an SVM-based algorithm running with Quantopian/Robinhood (see QuantopianArchive for template):
 
 ![Algorithm results](QuantopianArchive/live_deploy_quantopian.png "Algorithm results")
 
